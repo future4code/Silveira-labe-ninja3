@@ -1,10 +1,13 @@
 import React from 'react'
-import { AppContainer } from './components/AppContainer'
+import PagCadastro from './components/PageCadastro/PageCadastro'
 
-function App() {
-	return (
-        <AppContainer />
-	)
+
+export default class App extends React.Component {
+		render(){
+			return (
+				<PagCadastro/>
+				
+			)
+	}
 }
 
-export default App
