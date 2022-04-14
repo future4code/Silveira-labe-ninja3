@@ -50,7 +50,7 @@ export default class App extends React.Component {
 	  	}
 	clearCarrinho = () => {
 		this.setState({carrinho: []})
-	}
+	};
 
 
 	 render() {
