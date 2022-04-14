@@ -3,6 +3,7 @@ import axios from "axios"
 import styled from "styled-components"
 import { BASE_URL, HEADER } from '../../constants/requests'
 
+
 const PageContainer = styled.div`
     display: flex;
     justify-content:center;
@@ -27,7 +28,7 @@ const InputPadrao = styled.input`
 `
 const BotaoPadrao = styled.button`
     margin: 5px;
-    padding: 5px;
+    padding: 5px; 
 `
 const SelectPadrao = styled.select`
     margin: 5px;
@@ -116,7 +117,7 @@ export default class PagCadastro extends React.Component{
                     value={this.state.dueDate}
                     onChange={this.onChangeDate}
                     />
-                    <BotaoPadrao onClick={this.createJob}>Cadastrar Serviço</BotaoPadrao>
+                    <BotaoPadrao color="secondary" variant="contained" onClick={this.createJob}>Cadastrar Serviço</BotaoPadrao>
                 </CadastroContainer>
 
 
