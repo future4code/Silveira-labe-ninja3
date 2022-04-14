@@ -5,11 +5,6 @@ export const MainContainer = styled.div`
     grid-row: 200px 1fr 200px;
 `
 
-export const Header = styled.div`
-    border: 1px solid black;
-    text-align: center;
-`
-
 export const StoreContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -37,9 +32,4 @@ export const ServiceCard = styled.div`
         display: flex;
         justify-content: space-around;
     }
-`
-
-export const Footer = styled.div`
-    border: 1px solid black;
-    text-align: center;
 `
