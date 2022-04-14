@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { BASE_URL, HEADER } from "../../constants/requests";
 import { MainContainer, Header, Footer, StoreContainer, InputContainer, ServicesContainer , ServiceCard } from "./styled";
+// import Carrinho from "./components/Carrinho/Carrinho"
 
 export class ServicesList extends React.Component {
     state = {
@@ -11,6 +12,7 @@ export class ServicesList extends React.Component {
         inputMinimumValue: "",
         inputSearch: "",
         selectValue: "title"
+
     }
 
     componentDidMount() {
@@ -102,7 +104,7 @@ export class ServicesList extends React.Component {
 
                     <div>
                         <button>Detalhes</button>
-                        <button>Adicionar ao carrinho</button>
+                        <button onClick = { () => this.props.addCarrinho(service)}>Adicionar ao carrinho</button>
                     </div>
                 </ServiceCard>
             )
@@ -142,6 +144,10 @@ export class ServicesList extends React.Component {
                             <option>Menor Valor</option>
                             <option>Maior Valor</option>
                         </select>
+
+                        <button onClick={() => this.props.mudarTela("carrinho")}>
+                            Carrinho</button>
+
                     </InputContainer>
 
                     <ServicesContainer>

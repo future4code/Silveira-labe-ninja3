@@ -35,7 +35,7 @@ const SelectPadrao = styled.select`
     padding: 5px;
 `
 
-export default class PagCadastro extends React.Component{
+export default class PageCadastro extends React.Component{
 
     state = {
         title:"",
