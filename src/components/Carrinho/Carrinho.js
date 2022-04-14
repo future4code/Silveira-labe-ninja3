@@ -21,15 +21,19 @@ class Carrinho extends React.Component {
 
         return (
         <Main>
-        <h1>
-        Confirmar Contratações
-        </h1>
 
-        {listarCarrinho}
-
-<button onClick = {() => this.props.mudarTela("contratar")}>Voltar</button>
-
-<button onClick = {this.props.clearCarrinho}>Limpar o carrinho</button>
+        {this.props.carrinho.length === 0 ? (
+        <div>
+            <h1>Carrinho Vazio</h1>
+            <button onClick = {() => this.props.mudarTela("contratar")}>Voltar</button>
+        </div> ) : (
+        <div>
+            <h1>Carrinho</h1>
+            {listarCarrinho}
+            <button onClick = {() => this.props.mudarTela("contratar")}>Voltar</button>
+            <button onClick = {this.props.clearCarrinho}>Limpar o carrinho</button>
+        </div>
+        )}
 
         </Main>
 

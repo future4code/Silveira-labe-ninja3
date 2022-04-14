@@ -1,35 +1,26 @@
 import axios from "axios";
 import React from "react";
 import { BASE_URL, HEADER } from "../../constants/requests";
-import { MainContainer, Header, Footer, StoreContainer, InputContainer, ServicesContainer , ServiceCard } from "./styled";
+import Detalhes from "../../components/Detalhes/Detalhes";
+import { MainContainer, StoreContainer, InputContainer, ServicesContainer , ServiceCard } from "./styled";
 // import Carrinho from "./components/Carrinho/Carrinho"
 
 export class ServicesList extends React.Component {
     state = {
         services: [],
         filteredServices: [],
+        telaAtual: "contratar",
+        jobClicado: [],
         inputMaximumValue: "",
         inputMinimumValue: "",
         inputSearch: "",
         selectValue: "title"
-
     }
 
     componentDidMount() {
         this.getAllJobs();
         this.filterServices();
     }
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     if(
-    //         this.state.inputMinimumValue !== prevState.inputMinimumValue ||
-    //         this.state.inputMaximumValue !== prevState.inputMaximumValue ||
-    //         this.state.inputSearch !== prevState.inputSearch ||
-    //         this.state.selectValue !== prevState.selectValue
-    //     ) {
-    //         this.filterServices();
-    //     }
-    // }
 
     onChangeMaximumValue = (ev) => {
         this.setState({inputMaximumValue: ev.target.value});
@@ -91,8 +82,23 @@ export class ServicesList extends React.Component {
         return `${day}/${month}/${year}`;
     }
 
+    changeDetails = (service) => {
+        if(this.state.telaAtual === "contratar") {
+            this.setState({
+                telaAtual: "detalhes",
+                jobClicado: service
+            });
+        } else {
+            this.setState({
+                telaAtual: "contratar",
+                jobClicado: []
+            })
+        }
+    }
+
     render() {
         const filteredServices = this.filterServices();
+
         const renderServices = filteredServices.map((service) => {
             return (
                 <ServiceCard>
@@ -103,7 +109,7 @@ export class ServicesList extends React.Component {
                     </div>
 
                     <div>
-                        <button>Detalhes</button>
+                        <button onClick={() => this.changeDetails(service)}>Detalhes</button>
                         <button onClick = { () => this.props.addCarrinho(service)}>Adicionar ao carrinho</button>
                     </div>
                 </ServiceCard>
@@ -112,12 +118,9 @@ export class ServicesList extends React.Component {
 
         return (
             <MainContainer>
-                <Header>
-                    <p>header</p>
-                </Header>
 
-
-                <StoreContainer>
+                {this.state.telaAtual === "contratar" ? (
+                    <StoreContainer>
 
                     <InputContainer>
                         <input
@@ -155,10 +158,14 @@ export class ServicesList extends React.Component {
                     </ServicesContainer>
 
                 </StoreContainer>
+                ) : (
+                    <Detalhes 
+                    service={this.state.jobClicado}
+                    convertDate={this.convertDate}
+                    mudarTela={this.changeDetails}
+                    />
+                )}
 
-                <Footer>
-                    <p>footer</p>
-                </Footer>
             </MainContainer>
         )
     }
