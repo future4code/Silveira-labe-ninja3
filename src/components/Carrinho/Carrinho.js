@@ -1,20 +1,32 @@
 import axios from "axios";
 import React from "react";
-import { Main} from './styled'
+import { Main, Borda, Buttonvoltar,Buttonlimpar, Bordadois, Buttonremover} from './styled'
+import { MyButton } from "../Structure/styled";
+
 
 class Carrinho extends React.Component {
-
- 
+    // getTotalValue = () => {
+    //     let totalValue = 0
+    //     for(let services of this.props.services) {
+    //       totalValue += services.jobClicado * services.price    
+    //     }
+    //     return console.log(totalValue)
+    // }
 
 
     render() {
     const listarCarrinho = this.props.carrinho.map((service) => {
     return (
-        <div>
+        <Bordadois>
+            <b>Serviço:</b>
             <p>{service.title}</p>
+            <b>Valor:</b>
             <p>R${service.price}</p>
-            <button onClick = {() => this.props.removerCarrinho(service) }>Remover</button>
-        </div>
+            <Buttonremover>
+            <MyButton variant="outlined" color="secondary" onClick = {() => this.props.removerCarrinho(service) }>Remover</MyButton>
+            </Buttonremover>
+     
+        </Bordadois>
     )
    })
 
@@ -25,14 +37,23 @@ class Carrinho extends React.Component {
         {this.props.carrinho.length === 0 ? (
         <div>
             <h1>Carrinho Vazio</h1>
-            <button onClick = {() => this.props.mudarTela("contratar")}>Voltar</button>
+            <MyButton variant="outlined" color="secondary" onClick = {() => this.props.mudarTela("contratar")}>Voltar</MyButton>
         </div> ) : (
         <div>
+            <Borda>
             <h1>Carrinho</h1>
             {listarCarrinho}
-            <button onClick = {() => this.props.mudarTela("contratar")}>Voltar</button>
-            <button onClick = {this.props.clearCarrinho}>Limpar o carrinho</button>
-        </div>
+            </Borda>
+            
+            <Buttonvoltar>
+            <MyButton variant="outlined" color="secondary" onClick = {() => this.props.mudarTela("contratar")}>Voltar</MyButton>
+            </Buttonvoltar>
+
+            <Buttonlimpar>
+            <MyButton variant="outlined" color="secondary" onClick = {this.props.clearCarrinho}>Limpar o carrinho</MyButton>
+            </Buttonlimpar>
+
+            </div>
         )}
 
         </Main>
