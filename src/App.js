@@ -1,13 +1,21 @@
-import styled from 'styled-components';
 import React from 'react'
+
+// STYLED-COMPONENTS
+import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
+
+// COMPONENTES
 import Home from "./pages/Home/Home"
 import PageCadastro from "./pages/PageCadastro/PageCadastro"
-import {ServicesList} from "./pages/ServicesList/ServicesList"
 import Carrinho from "./components/Carrinho/Carrinho"
 import Detalhes from './components/Detalhes/Detalhes';
+import { ServicesList } from "./pages/ServicesList/ServicesList"
 import { Header } from './components/Structure/Header';
-import { Footer } from './components/Structure/Footer'; 
-import { createGlobalStyle } from 'styled-components';
+import { Footer } from './components/Structure/Footer';
+
+// MATERIAL UI
+import { ThemeProvider } from '@material-ui/styles';
+import { theme } from './constants/theme';
 
 const GlobalStyle = createGlobalStyle`
 	* {
@@ -35,15 +43,14 @@ export default class App extends React.Component {
 
 	 selectPage = () => {
 		 switch (this.state.mudarTela){
-			 			 case "home":
+			case "home":
 				 return <Home mudarTela = {this.mudarTela}/>;
-			 case "cadastro":
+			case "cadastro":
 				 return <PageCadastro/>;
 			case "contratar":
 		 		return <ServicesList 
 				 mudarTela = {this.mudarTela}
 				 addCarrinho = {this.addCarrinho}
-				//  irParaDetalhes=
 				 />;
 			case "carrinho":
 				return <Carrinho mudarTela = {this.mudarTela}
@@ -54,7 +61,7 @@ export default class App extends React.Component {
 			case "detalhes":
 				return <Detalhes 
 				mudarTela={this.mudarTela}
-				/>
+				/>;
 			default:
 				return <Home/>;
 		 }
@@ -86,14 +93,20 @@ export default class App extends React.Component {
 
 	 render() {
 		 return (
+			<ThemeProvider theme={theme}>
+
 			<MainContainer>
 			<GlobalStyle />
 
-			<Header />
-				<ContainerApp>{this.selectPage()}</ContainerApp>
+			<Header mudarTela={this.mudarTela}/>
+				<ContainerApp>
+					{this.selectPage()}
+				</ContainerApp>
 
 			<Footer />
 			</MainContainer>
+
+			</ThemeProvider>
 		 )
 	 }
 }

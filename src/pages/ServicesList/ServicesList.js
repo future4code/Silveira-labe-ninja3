@@ -2,8 +2,8 @@ import axios from "axios";
 import React from "react";
 import { BASE_URL, HEADER } from "../../constants/requests";
 import Detalhes from "../../components/Detalhes/Detalhes";
-import { MainContainer, StoreContainer, InputContainer, ServicesContainer , ServiceCard } from "./styled";
-// import Carrinho from "./components/Carrinho/Carrinho"
+import { MainContainer, StoreContainer, InputContainer, ServicesContainer , ServiceCard, Descricao, InfosContainer } from "./styled";
+import { Button, TextField } from "@material-ui/core";
 
 export class ServicesList extends React.Component {
     state = {
@@ -102,15 +102,19 @@ export class ServicesList extends React.Component {
         const renderServices = filteredServices.map((service) => {
             return (
                 <ServiceCard>
-                    <div>
+                    <InfosContainer>
                         <p>{service.title.toUpperCase()}</p>
-                        <p><strong>Valor:</strong> R$ {service.price}</p>
+                        <p><strong>R$</strong>{service.price}</p>
+                    </InfosContainer>
+                    
+                    <Descricao>
+                        <p>{service.description}</p>
                         <p><strong>Prazo:</strong> {this.convertDate(service.dueDate)}</p>
-                    </div>
+                    </Descricao>
 
                     <div>
-                        <button onClick={() => this.changeDetails(service)}>Detalhes</button>
-                        <button onClick = { () => this.props.addCarrinho(service)}>Adicionar ao carrinho</button>
+                        <Button color="primary" size="small" onClick={() => this.changeDetails(service)}>Detalhes</Button>
+                        <Button color="primary" size="small" onClick = { () => this.props.addCarrinho(service)}>Adicionar ao carrinho</Button>
                     </div>
                 </ServiceCard>
             )
@@ -123,21 +127,26 @@ export class ServicesList extends React.Component {
                     <StoreContainer>
 
                     <InputContainer>
-                        <input
+                        <TextField 
+                        variant="filled"
+                        size="small"
                         type="number"
-                        placeholder="Valor Máximo"
+                        label="Valor Máximo"
                         value={this.state.inputMaximumValue}
                         onChange={this.onChangeMaximumValue} />
 
-                        <input 
+                        <TextField 
+                        variant="filled"
+                        size="small"
                         type="number"
-                        placeholder="Valor Mínimo"
+                        label="Valor Mínimo"
                         value={this.state.inputMinimumValue} 
                         onChange={this.onChangeMinimumValue} />
 
-                        <input
-                        type="search"
-                        placeholder="Título ou descrição"
+                        <TextField
+                        variant="filled"
+                        size="small"
+                        label="Título ou descrição"
                         value={this.state.inputSearch} 
                         onChange={this.onChangeSearch} />
 
@@ -147,9 +156,6 @@ export class ServicesList extends React.Component {
                             <option>Menor Valor</option>
                             <option>Maior Valor</option>
                         </select>
-
-                        <button onClick={() => this.props.mudarTela("carrinho")}>
-                            Carrinho</button>
 
                     </InputContainer>
 

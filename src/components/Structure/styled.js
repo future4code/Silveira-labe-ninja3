@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Button from '@material-ui/core/Button';
-import { WidgetsSharp } from "@material-ui/icons";
 
 // ------------- HEADER -------------
 
@@ -20,17 +18,15 @@ export const HeaderContainer = styled.div`
     img {
         width: 125px;
     }
+
+    Button {
+        margin-right: 20px;
+    }
 `
 
 export const TituloContainer = styled.div`
     display: flex;
 `
-
-export const MyButton = styled(Button) ({
-    height: "2em",
-    marginRight: "5px"
-});
-
 
 // ------------- FOOTER -------------
 
