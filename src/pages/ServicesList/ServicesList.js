@@ -69,6 +69,8 @@ export class ServicesList extends React.Component {
                     return a.price - b.price;
                 case "Maior Valor":
                     return b.price - a.price;
+                default:
+                    return "Título";
             }
         })
 

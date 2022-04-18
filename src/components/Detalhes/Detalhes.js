@@ -3,7 +3,6 @@ import axios from "axios";
 import { BASE_URL, HEADER } from "../../constants/requests";
 import { ContainerDetalhes, ContainerMaster, Descricao, Data, Valor, Pagamento, Lindo } from "./styled";
 import { } from "@material-ui/icons";
-import { MyButton } from "../Structure/styled";
 
 
 class Detalhes extends React.Component {
@@ -48,7 +47,7 @@ class Detalhes extends React.Component {
                                 <b>Métodos de pagamento: </b>
                                 <ul><li>{this.props.service.paymentMethods}</li></ul>
                             </Pagamento>
-                            <MyButton variant="outlined" color="secondary" onClick={() => this.props.mudarTela("detalhes")}>Voltar</MyButton>
+                            <button variant="outlined" color="secondary" onClick={() => this.props.mudarTela("detalhes")}>Voltar</button>
                         </Lindo>
                     </ContainerDetalhes>
                 </ContainerMaster>

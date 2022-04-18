@@ -10,11 +10,11 @@ export function Footer() {
     return (
         <ContainerFooter>
 
-            <img src={facebookLogo} />
-            <img src={instagramLogo} />
-            <img src={twitterLogo} />
-            <img src={emailLogo} />
-            <img src={githubLogo} />
+            <img src={facebookLogo}  alt="facebook logo"/>
+            <img src={instagramLogo} alt="instagram logo"/>
+            <img src={twitterLogo} alt="twitter logo"/>
+            <img src={emailLogo} alt="email logo"/>
+            <img src={githubLogo} alt="github logo"/>
 
             <p>@2022 - Todos os direitos reservados</p>
 

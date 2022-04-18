@@ -2,13 +2,13 @@ import React from "react";
 import logo from "../../assets/imgs/logo.png"
 import { HeaderContainer, TituloContainer } from "./styled";
 import { Home, ShoppingCart } from "@material-ui/icons";
-import { Button, Box } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 export function Header(props) {
     return (
         <HeaderContainer>
             <TituloContainer>
-                <img src={logo} />
+                <img src={logo} alt="site logo" />
                 <h1>LabeNinjas</h1>
             </TituloContainer>
             

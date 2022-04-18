@@ -1,7 +1,5 @@
-import axios from "axios";
 import React from "react";
 import { Main, Borda, Buttonvoltar,Buttonlimpar, Bordadois, Buttonremover} from './styled'
-import { MyButton } from "../Structure/styled";
 
 
 class Carrinho extends React.Component {
@@ -23,7 +21,7 @@ class Carrinho extends React.Component {
             <b>Valor:</b>
             <p>R${service.price}</p>
             <Buttonremover>
-            <MyButton variant="outlined" color="secondary" onClick = {() => this.props.removerCarrinho(service) }>Remover</MyButton>
+            <button variant="outlined" color="secondary" onClick = {() => this.props.removerCarrinho(service) }>Remover</button>
             </Buttonremover>
      
         </Bordadois>
@@ -37,7 +35,7 @@ class Carrinho extends React.Component {
         {this.props.carrinho.length === 0 ? (
         <div>
             <h1>Carrinho Vazio</h1>
-            <MyButton variant="outlined" color="secondary" onClick = {() => this.props.mudarTela("contratar")}>Voltar</MyButton>
+            <button variant="outlined" color="secondary" onClick = {() => this.props.mudarTela("contratar")}>Voltar</button>
         </div> ) : (
         <div>
             <Borda>
@@ -46,11 +44,11 @@ class Carrinho extends React.Component {
             </Borda>
             
             <Buttonvoltar>
-            <MyButton variant="outlined" color="secondary" onClick = {() => this.props.mudarTela("contratar")}>Voltar</MyButton>
+            <button variant="outlined" color="secondary" onClick = {() => this.props.mudarTela("contratar")}>Voltar</button>
             </Buttonvoltar>
 
             <Buttonlimpar>
-            <MyButton variant="outlined" color="secondary" onClick = {this.props.clearCarrinho}>Limpar o carrinho</MyButton>
+            <button variant="outlined" color="secondary" onClick = {this.props.clearCarrinho}>Limpar o carrinho</button>
             </Buttonlimpar>
 
             </div>

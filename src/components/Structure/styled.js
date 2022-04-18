@@ -33,6 +33,10 @@ export const TituloContainer = styled.div`
 export const ContainerFooter = styled.div`
     background-color: #0e141b;
     border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 
     img {
         width: 25px;
